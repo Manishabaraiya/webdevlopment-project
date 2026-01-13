@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Generator Tool</title>
+    <link rel="stylesheet" href="pattern.css">
+</head>
+<body>
+ <div class="container">
+
+    <h1>Pattern Generator Tool</h1>
+
+    <input type="number" id="num" placeholder="Enter the Number">
+
+    <select id="patternType">
+        <option value="RightTriangle">Right Triangle</option>
+        <option value="Different">Differnt</option>
+        <option value="Square">Square</option>
+        <option value="leftTriangle">Left Triangle</option>
+        <option value="Peramid">Peramid</option>
+        <option value="Diamond">Diamond</option>
+
+        
+
+    </select>
+    <button onclick="printPattern()">Print</button>
+    <p id="output"></p>
+
+ </div>
+
+ <script>
+    function printPattern(){
+        let n= document.getElementById("num").value;
+        let type=document.getElementById("patternType").value;
+
+        let pattern="";
+
+        if(n<=0){
+            alert("Enter valid Number");
+        }
+        switch(type){
+
+            case "Square":
+                for(let i=1;i<=n;i++){
+        for(let j=1;j<=n;j++){
+            pattern+="*";
+
+        }
+        pattern+="<br>";
+    }
+    break;
+
+    case "RightTriangle":
+        
+                for(let i=1;i<=n;i++){
+        for(let j=1;j<=i;j++){
+            pattern+="*";
+
+        }
+        pattern+="<br>";
+    }
+    break;
+
+
+   case "leftTriangle":
+
+     for(let i=n;i>=1;i--){
+        for(let j=1;j<=i;j++){
+            pattern+= "*";
+        }
+        pattern+= "<br>";
+     }
+     break;
+
+     case "Peramid":
+        for(let i=1;i<=n;i++){
+            for(let s=1;s<=n-i;s++){
+                pattern+="&nbsp";
+            }
+            for(let j=1;j<=2*i-1;j++){
+                pattern+=String.fromCharCode(i+64);
+            }
+            pattern+="<br>";
+        }
+        break;
+
+        case "Different":
+            for(let i=n;i>=1;i--){
+                for(let j=1;j<=i;j++){
+                    pattern+="*";
+
+                }
+                pattern+="<br>";
+            }
+            for(let i=1;i<=n;i++){
+                for(let j=1;j<=i;j++){
+                    pattern+="*";
+
+                }
+                pattern+="<br>";
+            }
+            break;
+
+            case "Diamond":
+                for(let i=1;i<=n;i++){
+            for(let s=1;s<=n-i;s++){
+                pattern+="&nbsp";
+            }
+            for(let j=1;j<=2*i-1;j++){
+                pattern+="*";
+            }
+            pattern+="<br>";
+        }
+        for(let i=n;i>=1;i--){
+            for(let s=1;s<=n-i;s++){
+                pattern+="&nbsp";
+            }
+            for(let j=1;j<=2*i-1;j++){
+                pattern+="*";
+            }
+            pattern+="<br>";
+        }
+        break;
+        
+    }
+    document.getElementById("output").innerHTML = pattern;
+ }
+
+ </script>
+    
+</body>
+</html>
